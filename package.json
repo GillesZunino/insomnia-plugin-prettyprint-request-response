@@ -1,0 +1,59 @@
+{
+  "name": "insomnia-plugin-prettyprint-request-response",
+  "version": "0.0.1",
+  "license": "MIT",
+  "author": {
+    "name": "Gilles Zunino",
+    "email": "gzunino@akakani.com",
+    "url": "https://gilles.zunino.dev"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/gilleszunino/insomnia-plugin-prettyprint-request-response"
+  },
+  "keywords": [
+    "insomnia",
+    "plugin"
+  ],
+  "insomnia": {
+    "name": "prettyprint-request-response",
+    "displayName": "Pretty print request / response",
+    "description": "Pretty print request / response in various formats",
+    "images": {
+    },
+    "publisher": {
+      "name": "Gilles Zunino"
+    },
+    "applications": {
+      "designer": "*",
+      "core": "*",
+      "cli": "*"
+    }
+  },
+  "main": "dist/index.js",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build:dev": "npx webpack --config webpack.dev.js",
+    "build:prod": "npx webpack --config webpack.prod.js",
+    "build:tsdx": "tsdx build --target node --tsconfig ./tsconfig.json",
+    "build": "npm run build:dev",
+    "prepublishOnly": "npm run build:prod"
+  },
+  "dependencies": {
+  },
+  "devDependencies": {
+    "@types/node": "15.0.2",
+    "clean-webpack-plugin": "3.0.0",
+    "terser-webpack-plugin": "5.1.1",
+    "ts-loader": "9.1.2",
+    "tsdx": "0.14.1",
+    "typescript": "4.2.4",
+    "webpack": "5.36.2",
+    "webpack-cli": "4.7.0",
+    "webpack-merge": "5.7.3",
+    "webpack-node-externals": "3.0.0"
+  },
+  "peerDependencies": {}
+}
