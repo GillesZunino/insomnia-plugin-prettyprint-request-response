@@ -1,0 +1,52 @@
+// -----------------------------------------------------------------------------------
+// Copyright 2021, Gilles Zunino
+// -----------------------------------------------------------------------------------
+
+{
+    "include": [
+        "src"
+    ],
+
+    "exclude": [
+        "node_modules"
+    ],
+
+    "references": [
+    ],
+
+    "compileOnSave": false,
+    "buildOnSave": false,
+
+    "compilerOptions": {
+      "target": "es2020",
+      "module": "es2015",
+      "moduleResolution": "node",
+      "esModuleInterop": true,
+      "sourceMap": true,
+
+      "lib": [
+        "es2020"
+      ],
+
+      "rootDir": "./src",
+      "outDir": "./dist",
+
+      "importHelpers": false,
+      "declaration": false,
+      "strict": true,
+      "noImplicitAny": true,
+      "strictNullChecks": true,
+      "strictFunctionTypes": true,
+      "strictPropertyInitialization": false,
+      "noImplicitThis": true,
+      "alwaysStrict": true,
+      "noImplicitReturns": true,
+      "noFallthroughCasesInSwitch": true,
+      "resolveJsonModule": true,
+      "suppressImplicitAnyIndexErrors": true,
+      "experimentalDecorators": true,
+
+      "noUnusedLocals": false,
+      "noUnusedParameters": false
+    }
+  }
