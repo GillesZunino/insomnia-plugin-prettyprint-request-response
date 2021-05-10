@@ -19,7 +19,7 @@
 
     "compilerOptions": {
       "target": "es2020",
-      "module": "es2015",
+      "module": "es2020",
       "moduleResolution": "node",
       "esModuleInterop": true,
       "sourceMap": true,
