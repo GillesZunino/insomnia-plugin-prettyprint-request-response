@@ -1,0 +1,40 @@
+<style>
+    .http {
+        background: white;
+        border: 0;
+        padding: 0;
+    }
+    .request {
+        color: blue;
+    }
+    .response {
+        color: green;
+    }
+</style>
+<pre>
+<code class="http request">{{request.method}} {{request.url}} {{request.httpVersion}}</code>
+{%- for header in request.headers -%}
+<br/><code class="http request">{{header.name}}: {{header.value}}</code>
+{%- endfor -%}
+{%- if request.cookies.length > 0 -%}
+{% set semicolon = joiner("; ") %}
+<code class="http request">Cookies: {% for cookie in request.cookies -%}{{ semicolon() }}{{ cookie.name }}={{ cookie.value }}{%- endfor -%}</code>
+{%- endif %}
+{#- Request Body -#}
+{%- if request.bodySize > 0 -%}
+<br/><code class="http request">{{request.postData.text}}</code>
+{%- endif -%}
+<br />
+<br />
+{#- Response Line -#}
+<code class="http response">{{response.httpVersion}} {{response.status}} {{response.statusText}}</code>
+{# Response Headers -#}
+{%- for header in response.headers -%}
+<code class="http response">{{header.name}}: {{header.value}}</code>
+{% endfor %}
+{#- Response Cookies -#}
+{#- Response Body -#}
+{%- if response.content.size > 0 -%}
+<br/><code class="http response">{{response.content.text}}</code>
+{%- endif -%}
+</pre>
