@@ -2,6 +2,7 @@
 // Copyright 2021, Gilles Zunino
 // -----------------------------------------------------------------------------------
 
+import { clipboard } from "electron";
 import HarPrettyPrinter from "./HarPrettyPrinter";
 
 
@@ -13,11 +14,13 @@ const requestActions = [{
 		const har: string = await context.data.export.har( { includePrivate: true } );
 
 		const harPrettyPrinter: HarPrettyPrinter = new HarPrettyPrinter();
-		const html: string = harPrettyPrinter.toHtml(har, "fiddler.njk");
-		
-		const body: HTMLDivElement = document.createElement("div");
-		body.innerHTML = html;
-		context.app.dialog(`Pretty Print - "${request.name}"`, body, { tall: true, wide: false, skinny: false });
+		let html: string = harPrettyPrinter.toHtml(har, "fiddler.njk");
+		const plainText: string = harPrettyPrinter.toText(har, "plaintext.njk");
+
+		clipboard.write({
+			text: plainText,
+			html: html
+		});
 	}
 }];
 
