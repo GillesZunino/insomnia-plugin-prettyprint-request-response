@@ -23,6 +23,10 @@
         background-color: rgb(252, 217, 217);
         width: 100%;
     }
+    div.request-not-sent {
+        background-color: rgb(219, 219, 219);
+        width: 100%;
+    }
 
     div.response-ok code {
         color: black;
@@ -30,9 +34,11 @@
     div.response-failed code {
         color: black;
     }
+    div.request-not-sent {
+        color: rgb(204, 134, 5);
+    }
 </style>
-<pre>
-<div class="request-container"><code>{{request.method}} {{request.url}} {{request.httpVersion}}</code>
+<pre><div class="request-container"><code>{{request.method}} {{request.url}} {{request.httpVersion}}</code>
 {%- for header in request.headers -%}
 <br/><code>{{header.name}}: {{header.value}}</code>
 {%- endfor -%}
@@ -47,6 +53,7 @@
 </div>
 <br />
 {#- Response Line -#}
+{%- if response.status >= 100 -%}
 <div class="{{ 'response-ok' if (response.status >= 100) and (response.status <= 399) else 'response-failed' }}"><code>{{response.httpVersion}} {{response.status}} {{response.statusText}}</code>
 {# Response Headers -#}
 {%- for header in response.headers -%}
@@ -57,5 +64,7 @@
 {%- if response.content.size > 0 -%}
 <br/><code>{{response.content.text}}</code>
 {%- endif -%}
-</div>
-</pre>
+{%- else -%}
+<div class="request-not-sent"><code>Request has not been sent yet</code></div>
+{%- endif -%}
+</div></pre>
