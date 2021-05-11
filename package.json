@@ -43,6 +43,7 @@
     "prepublishOnly": "npm run build:prod"
   },
   "dependencies": {
+    "electron": "9",
     "nunjucks": "3.2.3"
   },
   "devDependencies": {
