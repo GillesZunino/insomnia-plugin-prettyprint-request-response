@@ -14,8 +14,8 @@ const requestActions = [{
 		const har: string = await context.data.export.har( { includePrivate: true } );
 
 		const harPrettyPrinter: HarPrettyPrinter = new HarPrettyPrinter();
-		let html: string = harPrettyPrinter.toHtml(har, "fiddler.njk");
-		const plainText: string = harPrettyPrinter.toText(har, "plaintext.njk");
+		let html: string = harPrettyPrinter.toHtml(request.name, har, "fiddler.njk");
+		const plainText: string = harPrettyPrinter.toText(request.name, har, "plaintext.njk");
 
 		clipboard.write({
 			text: plainText,

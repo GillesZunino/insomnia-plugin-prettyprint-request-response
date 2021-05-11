@@ -18,15 +18,15 @@ export default class HarPrettyPrinter {
         this.textTemplatingEnvironment = new nunjucks.Environment(new nunjucks.FileSystemLoader(path.resolve(templatesBasePath, "../templates/text")), { autoescape: false });
     }
 
-    public toHtml(rawhar: string, templateName: string): string {
+    public toHtml(requestName: string, rawhar: string, templateName: string): string {
         const har: any = JSON.parse(rawhar);
-        const entry: any = har.log.entries[0];
+        const entry: any = har.log.entries.find((entry: any) => entry.comment === requestName);
         return this.htmlTemplatingEnvironment.render(templateName, { request: entry.request, response: entry.response });
     }
 
-    public toText(rawhar: string, templateName: string): string {
+    public toText(requestName: string, rawhar: string, templateName: string): string {
         const har: any = JSON.parse(rawhar);
-        const entry: any = har.log.entries[0];
+        const entry: any = har.log.entries.find((entry: any) => entry.comment === requestName);
         return this.textTemplatingEnvironment.render(templateName, { request: entry.request, response: entry.response });
     }
 }
