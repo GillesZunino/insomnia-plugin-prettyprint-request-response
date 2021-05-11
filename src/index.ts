@@ -7,7 +7,7 @@ import HarPrettyPrinter from "./HarPrettyPrinter";
 
 
 const requestActions = [{
-	label: "Pretty print last request/response",
+	label: "Copy last response as HTML",
 	icon: "fa-file-text-o",
 	action: async (context: any, data: any): Promise<void> => {
 		const { request, requestGroup } = data;
