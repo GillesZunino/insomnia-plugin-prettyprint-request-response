@@ -1,40 +1,61 @@
 <style>
-    .http {
-        background: white;
+    pre, code {
+        background-color: inherit;
         border: 0;
+        font-family: "Courrier New", "Consolas", "Cascadia Mono", monospace;
+        font-size: 10px;
         padding: 0;
     }
-    .request {
-        color: blue;
+
+    div.request-container {
+        background-color: rgb(219, 219, 219);
+        width: 100%;
     }
-    .response {
-        color: green;
+    div.request-container code {
+        color: rgb(5, 5, 216);
+    }
+
+    div.response-ok {
+        background-color: rgb(217, 252, 217);
+        width: 100%;
+    }
+    div.response-failed {
+        background-color: rgb(252, 217, 217);
+        width: 100%;
+    }
+
+    div.response-ok code {
+        color: black;
+    }
+    div.response-failed code {
+        color: black;
     }
 </style>
 <pre>
-<code class="http request">{{request.method}} {{request.url}} {{request.httpVersion}}</code>
+<div class="request-container"><code>{{request.method}} {{request.url}} {{request.httpVersion}}</code>
 {%- for header in request.headers -%}
-<br/><code class="http request">{{header.name}}: {{header.value}}</code>
+<br/><code>{{header.name}}: {{header.value}}</code>
 {%- endfor -%}
 {%- if request.cookies.length > 0 -%}
 {% set semicolon = joiner("; ") %}
-<code class="http request">Cookies: {% for cookie in request.cookies -%}{{ semicolon() }}{{ cookie.name }}={{ cookie.value }}{%- endfor -%}</code>
+<code>Cookies: {% for cookie in request.cookies -%}{{ semicolon() }}{{ cookie.name }}={{ cookie.value }}{%- endfor -%}</code>
 {%- endif %}
 {#- Request Body -#}
 {%- if request.bodySize > 0 -%}
-<br/><code class="http request">{{request.postData.text}}</code>
+<br/><code>{{request.postData.text}}</code>
 {%- endif -%}
-<br />
+</div>
 <br />
 {#- Response Line -#}
-<code class="http response">{{response.httpVersion}} {{response.status}} {{response.statusText}}</code>
+<div class="{{ 'response-ok' if (response.status >= 100) and (response.status <= 399) else 'response-failed' }}"><code>{{response.httpVersion}} {{response.status}} {{response.statusText}}</code>
 {# Response Headers -#}
 {%- for header in response.headers -%}
-<code class="http response">{{header.name}}: {{header.value}}</code>
+<code>{{header.name}}: {{header.value}}</code>
 {% endfor %}
 {#- Response Cookies -#}
 {#- Response Body -#}
 {%- if response.content.size > 0 -%}
-<br/><code class="http response">{{response.content.text}}</code>
+<br/><code>{{response.content.text}}</code>
 {%- endif -%}
+</div>
 </pre>
