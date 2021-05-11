@@ -12,6 +12,8 @@
     "url": "https://github.com/gilleszunino/insomnia-plugin-prettyprint-request-response"
   },
   "keywords": [
+    "pretty-print",
+    "prettier",
     "insomnia",
     "plugin"
   ],
