@@ -50,8 +50,8 @@
 {%- if request.bodySize > 0 -%}
 <br/><code>{{request.postData.text}}</code>
 {%- endif -%}
-</div>
 <br />
+</div>
 {#- Response Line -#}
 {%- if response.status >= 100 -%}
 <div class="{{ 'response-ok' if (response.status >= 100) and (response.status <= 399) else 'response-failed' }}"><code>{{response.httpVersion}} {{response.status}} {{response.statusText}}</code>
