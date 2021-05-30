@@ -20,7 +20,6 @@ Cookies: {% for cookie in request.cookies -%}{{ semicolon() }}{{ cookie.name }}=
 {%- for header in response.headers -%}
 {{header.name}}: {{header.value}}
 {% endfor %}
-{#- Response Cookies -#}
 {#- Response Body -#}
 {%- if response.content.size > 0 -%}
 {{- "\n" -}}
