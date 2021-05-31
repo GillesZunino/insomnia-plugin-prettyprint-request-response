@@ -13,7 +13,7 @@ const requestActions = [{
 		const { request, requestGroup } = data;
 
 		try {
-			const har: string = await context.data.export.har( { includePrivate: true } );
+			const har: string = await context.data.export.har({ includePrivate: false});
 
 			const harPrettyPrinter: HarPrettyPrinter = new HarPrettyPrinter();
 			let html: string = harPrettyPrinter.toHtml(request.name, har, "fiddler.njk");

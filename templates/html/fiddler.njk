@@ -47,10 +47,10 @@
 <code>Cookies: {% for cookie in request.cookies -%}{{ semicolon() }}{{ cookie.name }}={{ cookie.value }}{%- endfor -%}</code>
 {%- endif %}
 {#- Request Body -#}
-{%- if request.bodySize > 0 -%}
-<br/><code>{{request.postData.text}}</code>
+{%- if request.postData.text !== "" -%}
+<br/><br/><code>{{request.postData.text}}</code>
 {%- endif -%}
-<br />
+<br/>
 </div>
 {#- Response Line -#}
 {%- if response.status >= 100 -%}
