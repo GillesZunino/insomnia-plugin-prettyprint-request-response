@@ -5,6 +5,7 @@
 import { clipboard } from "electron";
 import HarPrettyPrinter from "./HarPrettyPrinter";
 
+const harPrettyPrinter: HarPrettyPrinter = new HarPrettyPrinter("../templates");
 
 const requestActions = [{
 	label: "Copy last response as HTML",
@@ -15,7 +16,6 @@ const requestActions = [{
 		try {
 			const har: string = await context.data.export.har({ includePrivate: false});
 
-			const harPrettyPrinter: HarPrettyPrinter = new HarPrettyPrinter();
 			let html: string = harPrettyPrinter.toHtml(request.name, har, "fiddler.njk");
 			const plainText: string = harPrettyPrinter.toText(request.name, har, "plaintext.njk");
 	

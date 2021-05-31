@@ -66,6 +66,7 @@ module.exports = {
                 
                 new webpack.DefinePlugin({
                     DEVELOPMENT: JSON.stringify(type === MODE_DEVELOPMENT),
+                    PRODUCTION: JSON.stringify(type === MODE_PRODUCTION),
                     "process.env.NODE_ENV": JSON.stringify(type)
                 })
             ]
