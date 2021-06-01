@@ -1,6 +1,6 @@
 {
   "name": "insomnia-plugin-prettyprint-request-response",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "license": "MIT",
   "author": {
     "name": "Gilles Zunino",
@@ -23,7 +23,7 @@
     "description": "Pretty print request / response in various formats",
     "images": {
       "icon": "images/html5.svg",
-      "cover":"images/pasted-result-ok.png"
+      "cover": "images/pasted-result-ok.png"
     },
     "publisher": {
       "name": "Gilles Zunino"
