@@ -1,20 +1,20 @@
 {{request.method}} {{request.url}} {{request.httpVersion}}
+{%- for header in request.headers -%}
+{{- "\n" -}}{{header.name}}: {{header.value}}
+{%- endfor -%}
+{{- "\n" -}}
 {%- if request.cookies.length > 0 -%}
-{% for header in request.headers %}
-{{header.name}}: {{header.value}}
-{%- endfor %}
-{%- endif -%}
-{%- if request.cookies.length > 0 -%}
-{% set semicolon = joiner("; ") %}
-Cookies: {% for cookie in request.cookies -%}{{ semicolon() }}{{ cookie.name }}={{ cookie.value }}{%- endfor -%}
+{%- set semicolon = joiner("; ") -%}
+Cookies: {%- for cookie in request.cookies -%}{{ semicolon() }}{{ cookie.name }}={{ cookie.value }}{%- endfor -%}
+{{- "\n" -}}
 {%- endif %}
 {#- Request Body -#}
-{%- if request.bodySize > 0 -%}
-{{request.postData.text}}
+{%- if request.postData.text !== "" -%}
+{{- "\n" -}}{{request.postData.text}}{{- "\n" -}}
 {%- endif -%}
 {{- "\n" -}}
-{{- "\n" -}}
 {#- Response Line -#}
+{%- if response.status >= 100 -%}
 {{response.httpVersion}} {{response.status}} {{response.statusText}}
 {# Response Headers -#}
 {%- for header in response.headers -%}
@@ -24,4 +24,7 @@ Cookies: {% for cookie in request.cookies -%}{{ semicolon() }}{{ cookie.name }}=
 {%- if response.content.size > 0 -%}
 {{- "\n" -}}
 {{response.content.text}}
+{%- endif -%}
+{%- else -%}
+Request has not been sent yet
 {%- endif -%}
