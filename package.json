@@ -52,6 +52,7 @@
     "@types/node": "15.6.1",
     "@types/nunjucks": "3.1.4",
     "clean-webpack-plugin": "3.0.0",
+    "simple-nunjucks-loader": "3.1.0",
     "terser-webpack-plugin": "5.1.2",
     "ts-loader": "9.2.2",
     "tsdx": "0.14.1",

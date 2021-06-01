@@ -51,7 +51,9 @@ module.exports = {
             },
             module: {
                 rules: [
-                    { test: /\.ts$/i, loader: "ts-loader" }
+                    { test: /\.ts$/i, loader: "ts-loader" },
+                    { test: /\.njk$/i, include: [ path.resolve(__dirname, "./templates/html") ], loader: "simple-nunjucks-loader", options: { autoescape: true } },
+                    { test: /\.njk$/i, include: [ path.resolve(__dirname, "./templates/text") ], loader: "simple-nunjucks-loader", options: { autoescape: false} }
                 ]
             },
             externals: [ WebpackNodeExternals({

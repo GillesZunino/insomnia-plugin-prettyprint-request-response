@@ -5,7 +5,7 @@
 import { clipboard } from "electron";
 import HarPrettyPrinter from "./HarPrettyPrinter";
 
-const harPrettyPrinter: HarPrettyPrinter = new HarPrettyPrinter("../templates");
+const harPrettyPrinter: HarPrettyPrinter = new HarPrettyPrinter();
 
 const requestActions = [{
 	label: "Copy last response as HTML",
