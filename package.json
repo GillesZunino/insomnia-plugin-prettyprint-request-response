@@ -22,6 +22,8 @@
     "displayName": "Pretty print request / response",
     "description": "Pretty print request / response in various formats",
     "images": {
+      "icon": "images/html5.svg",
+      "cover":"images/pasted-result-ok.png"
     },
     "publisher": {
       "name": "Gilles Zunino"
@@ -35,7 +37,8 @@
   "main": "dist/index.js",
   "files": [
     "dist",
-    "templates"
+    "images/html5.svg",
+    "images/pasted-result-ok.png"
   ],
   "scripts": {
     "build:dev": "npx webpack --config webpack.dev.js",
