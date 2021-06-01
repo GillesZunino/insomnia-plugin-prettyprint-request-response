@@ -48,6 +48,8 @@
     "prepublishOnly": "npm run build:prod"
   },
   "dependencies": {
+    "electron": "^9",
+    "extract-zip": "2.0.1",
     "nunjucks": "3.2.3"
   },
   "devDependencies": {
@@ -64,7 +66,5 @@
     "webpack-merge": "5.7.3",
     "webpack-node-externals": "3.0.0"
   },
-  "peerDependencies": {
-    "electron": "^9"
-  }
+  "peerDependencies": {}
 }
