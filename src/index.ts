@@ -2,7 +2,6 @@
 // Copyright 2021, Gilles Zunino
 // -----------------------------------------------------------------------------------
 
-import { clipboard } from "electron";
 import HarPrettyPrinter from "./HarPrettyPrinter";
 
 const harPrettyPrinter: HarPrettyPrinter = new HarPrettyPrinter();
@@ -19,10 +18,6 @@ const requestActions = [{
 			let html: string = harPrettyPrinter.toHtml(request.name, har, "fiddler.njk");
 			const plainText: string = harPrettyPrinter.toText(request.name, har, "plaintext.njk");
 	
-			clipboard.write({
-				text: plainText,
-				html: html
-			});
 		}
 		catch (e) {
 			const message: string = (<Error>e).message;
