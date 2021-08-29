@@ -25,7 +25,8 @@ const requestActions = [{
 			});
 		}
 		catch (e) {
-			await context.app.alert("Requests could not be exported as HAR", e.message);
+			const message: string = (<Error>e).message;
+			await context.app.alert("Requests could not be exported as HAR", message);
 		}
 	}
 }];
