@@ -9,13 +9,21 @@ export default class HarPrettyPrinter {
     public toHtml(requestName: string, rawhar: string, templateName: string): string {
         const har: any = JSON.parse(rawhar);
         const entry: any = this.cleanupHarEntryHeaders(har.log.entries.find((entry: any) => entry.comment === requestName));
-        return this.htmlTemplate({ request: entry.request, response: entry.response });
+        if (entry) {
+            return this.htmlTemplate({ request: entry.request, response: entry.response });
+        }
+
+        throw new Error("The request cannot be found in the workspace");
     }
 
     public toText(requestName: string, rawhar: string, templateName: string): string {
         const har: any = JSON.parse(rawhar);
         const entry: any = this.cleanupHarEntryHeaders(har.log.entries.find((entry: any) => entry.comment === requestName));
-        return this.textTemplate({ request: entry.request, response: entry.response });
+        if (entry) {
+            return this.textTemplate({ request: entry.request, response: entry.response });
+        }
+        
+        throw new Error("The request cannot be found in the workspace");
     }
 
     private cleanupHarEntryHeaders(harEntry: any): any {
