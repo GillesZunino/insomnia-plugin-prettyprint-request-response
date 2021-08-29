@@ -51,7 +51,11 @@
     "electron": "13.2.3",
     "extract-zip": "2.0.1",
     "nunjucks": "3.2.3",
-    "yauzl": "2.10.0"
+    "yauzl": "2.10.0",
+    "asar": "3.0.3",
+    "sanitize-filename": "1.6.3",
+    "run-series": "1.1.9",
+    "get-package-info":"1.0.0"
   },
   "devDependencies": {
     "@types/node": "16.7.5",
