@@ -4,6 +4,8 @@
 
 import HarPrettyPrinter from "./HarPrettyPrinter";
 
+const DialogTitle: string = "Copy last response as HTML";
+
 const harPrettyPrinter: HarPrettyPrinter = new HarPrettyPrinter();
 
 const requestActions = [{
@@ -18,10 +20,15 @@ const requestActions = [{
 			let html: string = harPrettyPrinter.toHtml(request.name, har, "fiddler.njk");
 			const plainText: string = harPrettyPrinter.toText(request.name, har, "plaintext.njk");
 	
+			if (context.app.clipboard) {
+				context.app.clipboard.writeText(plainText);
+			} else {
+				await context.app.alert(DialogTitle, "This version of Insomnia does not support clipboard access");
+			}
 		}
 		catch (e) {
-			const message: string = (<Error>e).message;
-			await context.app.alert("Requests could not be exported as HAR", message);
+			const message: string = "Requests could not be exported as HAR: \n" + (<Error>e).message;
+			await context.app.alert(DialogTitle, message);
 		}
 	}
 }];
