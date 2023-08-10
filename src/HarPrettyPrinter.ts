@@ -27,12 +27,14 @@ export default class HarPrettyPrinter {
     }
 
     private cleanupHarEntryHeaders(harEntry: any): any {
+        //
         // Insomnia sometimes exports response headers incorrectly. For instance, "Referrer-Policy: " gets exported as follows:
         // {
         //     "name": "Referrer-Policy: ",
         //     "value": ""
         // }
         // We traverse all headers, trim whitespaces and remove the trailing ':' from the header name
+        //
         for (let responseHeaderIndex: number = 0; responseHeaderIndex < harEntry.response.headers.length; responseHeaderIndex++) {
             let currentHeader: any = harEntry.response.headers[responseHeaderIndex];
             let trimmedHeaderName: string = currentHeader.name.trimEnd();
