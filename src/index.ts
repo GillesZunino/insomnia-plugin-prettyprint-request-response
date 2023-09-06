@@ -13,12 +13,12 @@ const textFormatter: TextFormatter = new TextFormatter();
 const requestActions = [
 	{
 		label: "Copy last response as text",
-		icon: "fa-file",
+		icon: "fa fa-file",
 		action: async (context: any, data: any): Promise<void> => textFormatter.formatAsync(context, data)
 	},
 	{
 		label: "Copy last response as HTML",
-		icon: "fa-file-code",
+		icon: "fa fa-file-code",
 		action: async (context: any, data: any): Promise<void> => htmlFormatter.formatAsync(context, data)
 	}
 ];
