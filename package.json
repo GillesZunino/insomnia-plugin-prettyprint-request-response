@@ -54,7 +54,7 @@
     "nunjucks": "3.2.4"
   },
   "devDependencies": {
-    "@types/node": "20.5.7",
+    "@types/node": "20.5.9",
     "@types/nunjucks": "3.2.3",
     "clean-webpack-plugin": "4.0.0",
     "simple-nunjucks-loader": "3.2.0",
