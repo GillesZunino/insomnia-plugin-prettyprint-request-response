@@ -13,7 +13,7 @@ const textFormatter: TextFormatter = new TextFormatter();
 const requestActions = [
 	{
 		label: "Copy last response as text",
-		icon: "fa fa-file",
+		icon: "fa fa-file-text",
 		action: async (context: any, data: any): Promise<void> => textFormatter.formatAsync(context, data)
 	},
 	{
